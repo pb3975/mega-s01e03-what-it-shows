@@ -1,0 +1,98 @@
+---
+layout: runbook
+title: '#4471 review: two causes behind one date ticket'
+owner: Will (pb3975) with Codex
+status: investigated
+reviewed: '2026-10-30'
+signature: 'Will / pb3975 / S01E03 / 2026-10-30'
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import DedupeExplorer from '#lib/kb/DedupeExplorer.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+</script>
+
+The [original incident](/kb/incidents/4471) says one issue and one fix. Its rendered
+table shows two causes. A shared symptom and a shared ticket do not establish a shared
+failure. This review uses the synthetic course export dated 4 October, not a live
+production feed. The review date records when we checked it, not when the data ended.
+
+## Separate the problems
+
+<CauseTable ticket={4471} />
+
+The table's "no ticket of its own" describes the exported desk state. The separate
+GitHub tickets linked below are this review's proposed split.
+
+Counts above come from `uniqueById`, `groupByCause`, and `tenantOf`. Export pages
+overlap, so count each report ID once before filtering for the ticket. Resolve the
+tenant's locale and form from the directory. `meta.browserLocale` and
+`meta.intakeTag` are intake guesses, not the cause. Every report in this export has
+a tenant on file; unknown tenants should remain unplaced for investigation.
+
+### Shared parser reads day-first dates month first
+
+[Parser ticket](https://github.com/pb3975/mega-s01e03-what-it-shows/issues/1).
+The shared parser assumes month-first input although these tenants use day-first
+dates. For example, R-41200 at harbour.dental reports 7 April becoming 4 July.
+This affects app and email reports and forms whose hint is already day-first.
+Changing a form hint alone cannot fix those paths. Make the parser respect an
+explicit input contract and verify ambiguous dates on every affected path.
+
+### Booking-v3 tells day-first tenants to enter month first
+
+[Form hint ticket](https://github.com/pb3975/mega-s01e03-what-it-shows/issues/2).
+For day-first tenants, booking-v3 prints `MM/DD/YYYY` while its form reads dates
+the tenant's way. This is a different failure: a person can follow the displayed
+instructions and still get the wrong date. R-41241 at alder.physio reports 6 August
+becoming 8 June. It arrives through the form; the tenant runs booking-v3. Align
+the hint with the form's interpretation and check it separately from the shared parser.
+
+<Callout kind="warn">
+The one-day-move reports are retained in the parser group and footnoted by the
+component. Their bodies raise a follow-up question about timezones, date-only
+handling, and chronology. Tenant classification is not proof of each report's
+root cause. Do not silently subtract these reports or claim a confirmed third bug
+without reproduction evidence.
+</Callout>
+
+The follow-up report IDs are R-41202, R-41209, R-41236, R-41344, and R-41620.
+R-41236 even describes an invite arriving before the booking. Preserve these
+accounts and ask for timestamps, input, expected date, actual date, and timezone.
+
+## Read arrival time separately from merge time
+
+<QueueTimeline ticket={4471} />
+
+Reports arrived from April through October. The large July merge bar describes
+desk processing, not the start of a sudden product incident. Later arrivals keep
+being merged into the known ticket. A queued parser fix therefore cannot stand
+in for a ticket for the form-hint failure, and "known" does not mean resolved.
+
+## Triage by evidence, not subject
+
+The [accepted triage page](/kb/triage/dedupe) tells the desk to merge matching
+subjects without reading the body, citing [decision 0001](/kb/decisions/0001-dedupe-by-subject).
+Those words disagree with the rendered explorer below, which compares causes.
+The old reviewed date also triggers the layout's stale warning. The recent date
+on the original incident does not make its one-issue conclusion true.
+
+<DedupeExplorer />
+
+Different subjects can describe the same cause. The same subject can describe
+different causes when channel or tenant form differs. An unknown tenant gives
+no confirmed cause, even if both subjects match.
+
+**Proposed desk rule:** read the body, resolve tenant locale and form, check the
+channel, and compare the failure before merging. Keep uncertain reports separate
+until that evidence exists. Link each confirmed cause to its own ticket and
+review the live component output before marking the page known.
+
+Decision 0001 remains unchanged because accepted decisions are immutable. This
+review proposes a replacement decision; it does not claim the desk has approved
+or deployed that change. No product fix has been implemented by this investigation.
+
+<RenderStamp {signature} />

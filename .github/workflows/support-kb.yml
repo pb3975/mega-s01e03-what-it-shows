@@ -1,0 +1,30 @@
+name: Support KB render
+on:
+  push:
+    branches: [main]
+    paths: ['support-kb/**', '.github/workflows/support-kb.yml']
+  pull_request:
+    paths: ['support-kb/**', '.github/workflows/support-kb.yml']
+  workflow_dispatch:
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: support-kb
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: support-kb/package-lock.json
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: support-kb-render
+          path: |
+            support-kb/build/
+            support-kb/verification/
