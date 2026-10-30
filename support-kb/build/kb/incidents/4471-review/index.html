@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link href="../../../_app/immutable/entry/start.CkeJSKZl.js" rel="modulepreload">
+<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link href="../../../_app/immutable/entry/start.8UhsXQ95.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/n8ENmZf5.js" rel="modulepreload">
-		<link href="../../../_app/immutable/chunks/CPKH6MNX.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/jpbdTvJ3.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/CdDEHtuf.js" rel="modulepreload">
-		<link href="../../../_app/immutable/entry/app.D6xgm0K9.js" rel="modulepreload">
+		<link href="../../../_app/immutable/entry/app.T0Ftm3JF.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/CRkm95oG.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/C8W2LUnC.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/CvxvsaYy.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/C_UcYQjt.js" rel="modulepreload">
 		<link href="../../../_app/immutable/nodes/0.CPG2wt1n.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/CT2JljD9.js" rel="modulepreload">
-		<link href="../../../_app/immutable/nodes/5.aXZI-c1Q.js" rel="modulepreload">
-		<link href="../../../_app/immutable/chunks/D_ysoLlr.js" rel="modulepreload">
+		<link href="../../../_app/immutable/nodes/5.B9W_maWw.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/6PaQe101.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/D_FA5QwP.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/DTymnJdW.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/BuK7PFFs.js" rel="modulepreload">
@@ -21,10 +21,14 @@
 		<link href="../../../_app/immutable/assets/Callout.yLErXQDM.css" rel="stylesheet">
 		<link href="../../../_app/immutable/assets/QueueTimeline.hI2H_0Om.css" rel="stylesheet">
 		<link href="../../../_app/immutable/assets/DedupeExplorer.C3mwiGDj.css" rel="stylesheet">
-		<link href="../../../_app/immutable/assets/5.CMZ6TBbc.css" rel="stylesheet"></head><body data-sveltekit-preload-data="hover"><div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 review: two causes behind one date ticket</h1> <p class="meta svelte-e2jw2j"><span>owner <b>Will (pb3975) with Codex</b></span> <span class="status investigated svelte-e2jw2j">investigated</span> <span class="svelte-e2jw2j">reviewed 2026-10-30 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p>The <a href="/kb/incidents/4471">original incident</a> says one issue and one fix. Its rendered
+		<link href="../../../_app/immutable/assets/5.CMZ6TBbc.css" rel="stylesheet"></head><body data-sveltekit-preload-data="hover"><div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 review: two causes behind one date ticket</h1> <p class="meta svelte-e2jw2j"><span>owner <b>Will (pb3975) with Codex</b></span> <span class="status closed svelte-e2jw2j">closed</span> <span class="svelte-e2jw2j">reviewed 2026-10-30 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p>The <a href="/kb/incidents/4471">original incident</a> says one issue and one fix. Its rendered
 table shows two causes. A shared symptom and a shared ticket do not establish a shared
 failure. This review uses the synthetic course export dated 4 October, not a live
-production feed. The review date records when we checked it, not when the data ended.</p> <h2>Separate the problems</h2> <p class="sum svelte-12oyimm"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p> <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead><tbody><!--[--><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>parser</code></td><td class="svelte-12oyimm">379</td><td class="tags svelte-12oyimm">parser ×356 · hint ×23</td><td class="svelte-12oyimm">11</td><td class="svelte-12oyimm">2026-04-01 → 2026-10-04</td><td class="svelte-12oyimm">#4471</td></tr><tr class="svelte-12oyimm wrong"><td class="svelte-12oyimm"><code>hint</code></td><td class="svelte-12oyimm">33</td><td class="tags svelte-12oyimm">hint ×18 · parser ×15</td><td class="svelte-12oyimm">3</td><td class="svelte-12oyimm">2026-04-17 → 2026-09-22</td><td class="svelte-12oyimm">not this ticket — no ticket of its own</td></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note svelte-12oyimm">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p><!--]--><!--[-1--><!--]--><!--]--><!----> <p>The table’s “no ticket of its own” describes the exported desk state. The separate
+production feed. The review date records when we checked it, not when the data ended.</p> <h2>Engineering outcome: 5 October</h2> <p>After the course accepted the split tickets, its <a href="https://hq.mega.dev/challenges/what-it-shows" rel="nofollow">engineering update</a> reported that #4471 closed on 5 October. The parser outcome is <strong>fixed</strong>: <code>fix(dates): parse dd/mm for eu locales</code>. The form-hint outcome is <strong>won’t fix</strong>:
+booking-v3 was retired. The parser ticket is closed as completed; the hint ticket
+is closed as not planned. Retiring the form is not a hint correction.</p> <p>These outcomes come from the course desk update, not a product deployment or
+production verification by this investigation. The original export remains
+unchanged. Its tables and the analysis below preserve the state through 4 October.</p> <h2>Separate the problems</h2> <p class="sum svelte-12oyimm"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p> <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead><tbody><!--[--><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>parser</code></td><td class="svelte-12oyimm">379</td><td class="tags svelte-12oyimm">parser ×356 · hint ×23</td><td class="svelte-12oyimm">11</td><td class="svelte-12oyimm">2026-04-01 → 2026-10-04</td><td class="svelte-12oyimm">#4471</td></tr><tr class="svelte-12oyimm wrong"><td class="svelte-12oyimm"><code>hint</code></td><td class="svelte-12oyimm">33</td><td class="tags svelte-12oyimm">hint ×18 · parser ×15</td><td class="svelte-12oyimm">3</td><td class="svelte-12oyimm">2026-04-17 → 2026-09-22</td><td class="svelte-12oyimm">not this ticket — no ticket of its own</td></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note svelte-12oyimm">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p><!--]--><!--[-1--><!--]--><!--]--><!----> <p>The table’s “no ticket of its own” describes the exported desk state. The separate
 GitHub tickets linked below are this review’s proposed split.</p> <p>Counts above come from <code>uniqueById</code>, <code>groupByCause</code>, and <code>tenantOf</code>. Export pages
 overlap, so count each report ID once before filtering for the ticket. Resolve the
 tenant’s locale and form from the directory. <code>meta.browserLocale</code> and <code>meta.intakeTag</code> are intake guesses, not the cause. Every report in this export has
@@ -62,15 +66,15 @@ or deployed that change. No product fix has been implemented by this investigati
 			
 			<script>
 				{
-					__sveltekit_knqd0z = {
+					__sveltekit_2txp20 = {
 						base: new URL("../../..", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("../../../_app/immutable/entry/start.CkeJSKZl.js"),
-						import("../../../_app/immutable/entry/app.D6xgm0K9.js")
+						import("../../../_app/immutable/entry/start.8UhsXQ95.js"),
+						import("../../../_app/immutable/entry/app.T0Ftm3JF.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 5],

@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 review: two causes behind one date ticket'
 owner: Will (pb3975) with Codex
-status: investigated
+status: closed
 reviewed: '2026-10-30'
 signature: 'Will / pb3975 / S01E03 / 2026-10-30'
 ---
@@ -19,6 +19,18 @@ The [original incident](/kb/incidents/4471) says one issue and one fix. Its rend
 table shows two causes. A shared symptom and a shared ticket do not establish a shared
 failure. This review uses the synthetic course export dated 4 October, not a live
 production feed. The review date records when we checked it, not when the data ended.
+
+## Engineering outcome: 5 October
+
+After the course accepted the split tickets, its [engineering update](https://hq.mega.dev/challenges/what-it-shows)
+reported that #4471 closed on 5 October. The parser outcome is **fixed**:
+`fix(dates): parse dd/mm for eu locales`. The form-hint outcome is **won't fix**:
+booking-v3 was retired. The parser ticket is closed as completed; the hint ticket
+is closed as not planned. Retiring the form is not a hint correction.
+
+These outcomes come from the course desk update, not a product deployment or
+production verification by this investigation. The original export remains
+unchanged. Its tables and the analysis below preserve the state through 4 October.
 
 ## Separate the problems
 
